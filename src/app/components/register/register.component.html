@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<p>register works!</p>
+
+<div class="container mt-5">
+
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+        <div class="form-group">
+            <label for="exampleInputName">Name User</label>
+            <input type="text" class="form-control" formControlName="name">
+  
+              <div *ngIf="myname.touched && myname.invalid" class="text-danger">
+                <p *ngIf="myname.errors.required">Name is required</p>
+              <!--  <p *ngIf="myname.errors.email">Invalid Name</p> -->
+              </div>
+  
+            </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" formControlName="email">
+
+            <div *ngIf="myemail.touched && myemail.invalid" class="text-danger">
+              <p *ngIf="myemail.errors.required">Email is required</p>
+              <p *ngIf="myemail.errors.email">Invalid Email</p>
+            </div>
+
+          </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" formControlName="password">
+       
+          <div *ngIf="mypassword.touched && mypassword.invalid" class="text-danger">
+            <p *ngIf="mypassword.errors.required">password is required</p>
+            <p *ngIf="mypassword.errors.minlength">Password must containes 8 chars at least </p>
+          </div>
+       
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Confirme Password</label>
+            <input type="password" class="form-control" formControlName="confirmpassword">
+         
+            <div *ngIf="myconfpassword.touched && myconfpassword.invalid" class="text-danger">
+              <p *ngIf="myconfpassword.errors.required">password is required</p>
+              <p *ngIf="myconfpassword.errors.minlength">Password must containes 8 chars at least </p>
+            </div>
+         
+          </div>
+
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Submit</button>
+      </form>
+
+</div>
+
+<app-footer></app-footer>
